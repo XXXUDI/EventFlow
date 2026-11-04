@@ -29,6 +29,28 @@ services:
     depends_on:
       - postgres
 
+  authservice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: local # change to prod for production
+    depends_on:
+      - postgres
+
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+    depends_on:
+      - authservice
+
 volumes:
   pgdata:
   pgadmin_data:

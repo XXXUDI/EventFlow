@@ -24,13 +24,13 @@ public class RefreshToken {
     private Integer userId;
 
     @Column("token_hash")
-    private String token;
+    private String tokenHash;
 
     private String device;
 
     @Column("created_at")
     private LocalDateTime createdAt;
-    @Column("updated_at")
-    private LocalDateTime updatedAt;
+    @Column("expires_at")
+    private LocalDateTime expiresAt;
 
 }
